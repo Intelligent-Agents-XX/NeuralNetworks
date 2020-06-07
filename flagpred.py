@@ -19,8 +19,8 @@ def process_data(data):
 
 def model_create():
 	model = tf.keras.models.Sequential()
-	model.add(units = 2, activation = 'relu', input_shape = (2,))
-	# model.add(units = 2, activation = 'relu')
+	model.add(units = 9, activation = 'relu', input_shape = (2,))
+	model.add(units = 6, activation = 'relu')
 	model.add(units = 1, activation = 'sigmoid')
 	model.compile(loss = 'binary_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
 	return model
@@ -31,7 +31,7 @@ def main():
 	data = get_dict(filename)
 	X, Y = process_data(data)
 	model = model_create()
-	model.fit(X, Y, validation_split = 0.2, epochs = 60)
+	model.fit(X, Y, validation_split = 0.2, epochs = 120)
 	print("Fitting has been done")
 	model.save("mymodel")
 
